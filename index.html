@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdTech Learning</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            padding-left: 10px;
+            padding-right: 10px;
+            background-color:rgb(0, 70, 213); /* Dark blue */
+            color: rgb(255, 255, 255); /* White */
+        }
+
+        .logo img {
+            height: 200px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-menu ul{
+            list-style: none;
+        }
+
+        .nav-menu ul li{
+            display:inline-block;
+           
+        }
+
+        .nav-menu ul li a{
+            display:block;
+           
+        }
+     
+
+        .nav-link {
+            color: rgb(255, 255, 255); /* White */
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .search-box {
+            padding: 5px;
+            font-size: 14px;
+            border: 1px solid rgb(204, 204, 204); /* Light gray */
+            border-radius: 4px;
+        }
+
+        .primary-btn {
+            background-color: rgb(0, 70, 213); /* White */
+            color: white; /* Dark blue */
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: opacity 0.15s;
+        }
+        .primary-btn:hover{
+            cursor: pointer;
+            opacity: 0.8;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 20px;
+            background-color: rgb(244, 244, 244); /* Very light gray */
+        }
+
+        .hero-content {
+            max-width: 50%;
+            margin-top: 80px;
+        }
+
+        .hero-title {
+            font-size: 36px;
+            color: rgb(51, 51, 51); /* Dark gray */
+        }
+
+        .hero-description {
+            font-size: 26px;
+            color: rgb(85, 85, 85); /* Medium gray */
+            margin: 20px 0;
+        }
+
+        .secondary-btn {
+            background-color: white; /* White */
+            color: rgb(0, 70, 213); /* Dark blue */
+            border-color: rgb(0, 70, 213);
+            border-style: solid;
+            padding:10px 15px;
+            border-radius: 4px;
+            transition: opacity 0.15s;
+            
+        }
+        .secondary-btn:hover{
+            cursor: pointer;
+            opacity: 0.8;
+        }
+        
+
+        .hero-image img {
+            margin-top: 100px;
+            max-width: 100%;
+            height: auto;
+        }
+        .webinar-section {
+            background-color: #f4f4f4;
+            padding: 0;
+        }
+        
+        .webinar-banner {
+            background: url('https://source.unsplash.com/1600x900/?webinar,learning') no-repeat center center/cover;
+            color: white;
+            padding: 60px 20px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 300px;
+        }
+        
+        .webinar-content {
+            max-width: 800px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .breadcrumb {
+            font-size: 14px;
+            color: #ddd;
+        }
+        
+        .webinar-content h2 {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .webinar-content p {
+            font-size: 16px;
+            color: #ddd;
+        }
+        
+        .webinar-content a {
+            color: #ffcc00;
+            text-decoration: underline;
+        }
+        
+        .search-box {
+            margin-top: 15px;
+            
+        }
+        
+        .search-box input {
+            width: 97.5%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+        
+        /* Webinar Filters */
+        .webinar-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background: #cce6ff;
+            flex-wrap: wrap;
+        }
+        
+        .webinar-filters button {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: white;
+            transition: 0.3s ease-in-out;
+        }
+        
+        .webinar-filters button.active {
+            background: #003366;
+            color: white;
+        }
+        
+        .webinar-filters button:hover {
+            background: #0055cc;
+            color: white;
+        }
+        
+        .filter-count {
+            background: red;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+        
+        /* Courses Section */
+        .courses-section {
+            padding: 40px 20px;
+            background-color: rgb(255, 255, 255); /* White */
+        }
+
+        .courses-title {
+            text-align: center;
+            color: rgb(51, 51, 51); /* Dark gray */
+            margin-bottom: 20px;
+        }
+
+        .courses-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .course-card {
+            width: 300px;
+            border: 1px solid rgb(221, 221, 221); /* Light gray */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        .course-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .course-details {
+            padding: 15px;
+        }
+
+        .course-title {
+            font-size: 20px;
+            color: rgb(51, 51, 51); /* Dark gray */
+        }
+
+        .course-description {
+            font-size: 14px;
+            color: rgb(85, 85, 85); /* Medium gray */
+            margin: 10px 0;
+        }
+        
+        .enroll-button {
+            padding: 10px 15px;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            background-color: rgb(0, 70, 213); /* Dark blue */
+            color: rgb(255, 255, 255); /* White */
+            cursor: pointer;
+        }
+        .logo img {
+            height: 100px; /* Adjusted size for a larger logo */
+        }
+        .intro {
+    text-align: center;
+    padding: 40px;
+    background-color: #e0e6f8;
+}
+
+.intro h2 {
+    color: #003366;
+    font-size: 28px;
+}
+
+.intro p {
+    color: #333;
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Card Section */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: #556b2f;
+    font-size: 20px;
+}
+
+.card p {
+    color: #333;
+    font-size: 16px;
+}
+
+.card button {
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+.card button:hover {
+    background-color: #002244;
+}
+/* Intro Section */
+.intro {
+    text-align: center;
+    padding: 40px;
+    background-color: #e0e6f8;
+}
+
+/* Placement Section */
+.placement-section {
+    text-align: center;
+    padding: 50px;
+    background: #e6f2ff;
+}
+
+.placement-section h2 {
+    font-size: 28px;
+    color: #003366;
+    font-weight: bold;
+}
+
+.placement-section h2 span {
+    background: #003366;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.courses-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Course Cards */
+.course-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    text-align: left;
+    position: relative;
+}
+
+.course-card h3 {
+    font-size: 20px;
+    color: #003366;
+}
+
+.course-tag {
+    display: inline-block;
+    background: #ffcc00;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.course-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Badges */
+.rating, .badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff6600;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+/* Footer Styles */
+.footer {
+    background-color: #f8f9fa;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #003366;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #007bff;
+}
+
+/* Social Media Icons */
+.social-icons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+/* Contact Link */
+.contact-link {
+    text-decoration: none;
+    color: #003366;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.contact-link:hover {
+    color: #007bff;
+}
+
+/* Logo */
+.footer-logo {
+    width: 100px;
+    margin-top: 10px;
+}
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header"<div style="
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1 ;">
+        <div class="logo"><img class="Logo" src="logos/logo.png" alt="EdTech Logo"></div>
+        <nav class="nav-menu">
+            <ul>
+                <li><select>
+                    <option>Explore</option>
+                    <option>Get a certificate</option>
+                    <option>Choose courses
+                       
+                        
+                    </option>
+                </select></li>
+                <li><input type="search" class="search-box" placeholder="What do you want to learn?"></li>
+                <li><a href="#degrees" class="nav-link">Online Degrees</a></li>
+                <li><a href="#careers" class="nav-link">Careers</a></li>
+                <li><a href="#login" class="nav-link">Log In</a></li>
+                <li><button class="primary-btn">Join for Free</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Learn Without Limits</h1>
+            <p class="hero-description">Join thousands of learners and explore courses from top educators to advance your career or start a new one.</p>
+            <button class="primary-btn">Get Started</button>
+            <button class="secondary-btn">Learn More</button>
+        </div>
+        <div class="hero-image">
+            <img src="logos/EdTech-App.png" alt="EdTech Illustration">
+        </div>
+    </section>
+    <section class="intro">
+        <h2>Shape the Future with Innovation</h2>
+        <p>Join our mission to revolutionize tech education. Learn, mentor, and innovate with industry experts.</p>
+    </section>
+
+    <section class="cards">
+        <div class="card">
+            <h3> Cutting-Edge Technologies</h3>
+            <p>Stay ahead with the latest trends in AI, cybersecurity, and software development.</p>
+            <button>Learn More</button>
+        </div>
+        <div class="card">
+            <h3> Become a Tech Mentor</h3>
+            <p>Guide the next generation of tech enthusiasts by sharing your expertise.</p>
+            <button>Learn More</button>
+        </div>
+        <div class="card">
+            <h3> Resources & Learning Hub</h3>
+            <p>Access tutorials, guides, and hands-on projects to boost your skills.</p>
+            <button>Learn More</button>
+        </div>
+    </section>
+    <!-- Free Webinars Section -->
+    <section class="webinar-section">
+        <div class="webinar-banner">
+            <div class="webinar-content">
+                <nav class="breadcrumb">
+                    <span>Courses &nbsp; > &nbsp; Webinar</span>
+                </nav>
+                <h2>Free Webinars</h2>
+                <p><strong>Learn something new with a free webinar!</strong> Webinars are a great way to learn something new! Scroll down to see free webinars available from our expert training providers and spend a few hours learning from an expert from your couch. Get started! <a href="#">See all upcoming webinars</a></p>
+                <div class="search-box">
+                    <input type="text" placeholder="Search for a webinar...">
+                </div>
+            </div>
+        </div>
+
+        <!-- Webinar Filters -->
+        <div class="webinar-filters">       
+            <select>
+                <option>📂 Category ▼</option>
+                <option>Web Development</option>
+                <option>App Development</option>
+                <option>Graphic Designing</option>
+            </select>
+
+            <select>
+                <option>📄 Format ▼</option>
+                <option>visual</option>
+                <option>Audio</option>
+                <option>Presentation</option>
+            </select>
+            <button>📍 Location ▼</button>
+            <button class="active">🎥 Webinar ▼</button>
+            <button>⚙ Show more filters <span class="filter-count">1</span></button>
+        </div>
+    </section>
+    <!-- Courses Section -->
+    <section class="courses-section" id="courses">
+        <h2 class="courses-title">Explore Our Courses</h2>
+        <div class="courses-grid">
+            <div class="course-card">
+                <img src="logos/FullStack.png" alt="Full Stack" class="course-image">
+                <div class="course-details">
+                    <h3 class="course-title">FULL STACK DEV</h3>
+                    <p class="course-description">Full Stack Developer Program - MERN Stack Course covers a broad range of topics, including Agile, HTML, CSS, Javascript, Bootstrap, data structures and algorithms, database basics.</p>
+                    <button class="enroll-button">Enroll Now</button>
+                </div>
+            </div>
+            <div class="course-card">
+                <img src="logos/Data Analytics.jpeg" alt="Data Analytics" class="course-image">
+                <div class="course-details">
+                    <h3 class="course-title">DATA ANALYTICS</h3>
+                    <p class="course-description">Data analytics is a multidisciplinary field that employs a wide range of analysis techniques, including math, statistics, and computer science, to draw insights from data sets.</p>
+                    <button class="enroll-button">Enroll Now</button>
+                </div>
+            </div>
+            <div class="course-card">
+                <img src="logos/Core Java.jpeg" alt="Core Java" class="course-image">
+                <div class="course-details">
+                    <h3 class="course-title">MASTER CORE JAVA</h3>
+                    <p class="course-description">Gain in-depth knowledge of the fundamental building blocks of the Java programming language, including concepts like variables, data types, control structures, classes, and more.</p>
+                    <button class="enroll-button">Enroll Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="intro">
+        <h2>Shape the Future with Innovation</h2>
+        <p>Join our mission to revolutionize tech education. Learn, mentor, and innovate with industry experts.</p>
+    </section>
+
+    <!-- Placement Guarantee Section -->
+    <section class="placement-section">
+        <h2><span>Placement Guarantee Courses</span></h2>
+        <p>✔ Guaranteed placement &nbsp; | &nbsp; ✔ 100% Refund if Not Hired &nbsp; | &nbsp; ✔ Become Job Ready</p>
+        <div class="courses-container">
+            <!-- First Row -->
+            <div class="course-card">
+                <div class="badge">New</div>
+                <h3>Full Stack Development Course</h3>
+                <span class="course-tag">course with guaranteed job</span>
+                <ul>
+                    <li> 4 months course</li>
+                    <li> ₹3-10 LPA salary placement</li>
+                    <li> 1.08 Lac+ opportunities</li>
+                </ul>
+                <a href="#">Know more →</a>
+            </div>
+
+            <div class="course-card">
+                <div class="rating"> 4.5</div>
+                <h3>Data Science Course</h3>
+                <span class="course-tag">course with internship placement</span>
+                <ul>
+                    <li> 6 months course</li>
+                    <li> ₹40,000 total stipend</li>
+                    <li> 45,500+ opportunities</li>
+                </ul>
+                <a href="#">Know more →</a>
+            </div>
+
+            <div class="course-card">
+                <div class="rating"> 4.3</div>
+                <h3>Human Resource Management Course</h3>
+                <span class="course-tag">course with job placement</span>
+                <ul>
+                    <li> 3 months course</li>
+                    <li> ₹3-10 LPA salary placement</li>
+                    <li> 2.91 Lac+ opportunities</li>
+                </ul>
+                <a href="#">Know more →</a>
+            </div>
+
+            <div class="course-card">
+                <div class="rating"> 4.4</div>
+                <h3>Digital Marketing Course</h3>
+                <span class="course-tag">course with guaranteed job</span>
+                <ul>
+                    <li> 5 months course</li>
+                    <li> ₹3-10 LPA salary placement</li>
+                    <li> 6.25 Lac+ opportunities</li>
+                </ul>
+                <a href="#">Know more →</a>
+            </div>
+
+            <!-- Second Row -->
+            <div class="course-card">
+                <div class="badge">New</div>
+                <h3>UI/UX Design Course</h3>
+                <span class="course-tag">course with guaranteed internship</span>
+                <ul>
+                    <li> 5 months course</li>
+                    <li> ₹35,000 total stipend</li>
+                    <li> 10K+ opportunities</li>
+                </ul>
+                <a href="#">Know more →</a>
+            </div>
+
+            <div class="course-card">
+                <div class="badge">New</div>
+                <h3>Product Management Course</h3>
+                <span class="course-tag">course with guaranteed internship</span>
+                <ul>
+                    <li> 5 months course</li>
+                    <li> ₹35,000 total stipend</li>
+                    <li> 3.1K+ opportunities</li>
+                </ul>
+                <a href="#">Know more →</a>
+            </div>
+
+            <div class="course-card">
+                <div class="badge">New</div>
+                <h3>Financial Modelling Course</h3>
+                <span class="course-tag">course with guaranteed internship</span>
+                <ul>
+                    <li> 4 months course</li>
+                    <li> ₹40,000 total stipend</li>
+                    <li> 7.4K+ opportunities</li>
+                </ul>
+                <a href="#">Know more →</a>
+            </div>
+
+            <div class="course-card">
+                <div class="badge">New</div>
+                <h3>Supply Chain Logistics Course</h3>
+                <span class="course-tag">course with guaranteed job</span>
+                <ul>
+                    <li> 2 months course</li>
+                    <li> ₹3-10 LPA salary placement</li>
+                    <li> Hired at Amazon, Swiggy, Zepto</li>
+                </ul>
+                <a href="#">Know more →</a>
+            </div>
+
+        </div>
+    </section>
+    <section class="courses-section" id="courses">
+        <h2 class="courses-title">Explore Other Courses</h2>
+        <div class="courses-grid">
+            <div class="course-card">
+                <img src="logos/master-of-business.webp" alt="Full Stack" class="course-image">
+                <div class="course-details">
+                    <h3 class="course-title">MASTER OF BUSINESS</h3>
+                    <p class="course-description">A Master in Business Administration (M.B.A.) is the perfect degree for people who either consider themselves or aspire to become natural leaders. An M.B.A. is specially designed for people who are interested in gaining management skills within a competitive business environment.</p>
+                    <button class="enroll-button">Enroll Now</button>
+                </div>
+            </div>
+            <div class="course-card">
+                <img src="logos/Ai in Marketing and Communication.jpeg" alt="Data Analytics" class="course-image">
+                <div class="course-details">
+                    <h3 class="course-title">AI IN MARKETING AND COMMUNICATIONS</h3>
+                    <p class="course-description">AI in digital marketing can automate repetitive and time-consuming tasks, like monitoring social media activity or responding to simple customer questions.</p>
+                    <button class="enroll-button">Enroll Now</button>
+                </div>
+            </div>
+            <div class="course-card">
+                <img src="logos/Digital Advertising Operation.jpeg" alt="Core Java" class="course-image">
+                <div class="course-details">
+                    <h3 class="course-title">DIGITAL ADVERTISING OPERATION</h3>
+                    <p class="course-description">Digital ad operations platforms are advertising operations and management software for publishers and other sellers of digital advertising that support sales, pricing, optimization, yield management, analytics and delivery of advertising traffic and assets across multiple digital channels, including online, mobile, signage and new formats for digital TV.</p>
+                    <button class="enroll-button">Enroll Now</button>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-container">
+                <!-- Connect with Us -->
+                <div class="footer-column">
+                    <h3>Connect with us</h3>
+                    <div class="social-icons">
+                        <a href="https://x.com/edtechlearning6?t=IzTAFIO5R3_6RZCeMkW5EQ&s=08" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook"></a>
+                        <a href="https://www.youtube.com/@EdtechLearning-e3m" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"></a>
+                        <a href="https://x.com/edtechlearning6?t=IzTAFIO5R3_6RZCeMkW5EQ&s=08" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733635.png" alt="Twitter"></a>
+                        <a href="https://x.com/edtechlearning6?t=IzTAFIO5R3_6RZCeMkW5EQ&s=08" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn"></a>
+                    </div>
+                    <img class="footer-logo" src="logos/logo.png" alt="Edtech Learners Logo">
+                </div>
+        
+                <!-- Get in Touch -->
+                <div class="footer-column">
+                    <h3>Get in touch</h3>
+                    <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=CllgCHrdlcMtGBzQJRVpHslLkcRpDRxBPRCgCkqxZtrvFQbJTZJttskwdFrKxdlJHRSQFNFhZWg" target="_blank" class="contact-link">✉ Contact Us</a>
+                </div>
+        
+                <!-- Explore Websites -->
+                <div class="footer-column">
+                    <h3>Explore Websites</h3>
+                    <ul>
+                        <li><a href="https://www.coursera.org/search?query=" target="_blank">Free Online Courses</a></li>
+                        <li><a href="https://www.coursera.org/search?query=Free%20Government%20Courses" target="_blank">Free Government Courses</a></li>
+                        <li><a href="https://www.coursera.org/search?query=Data%20Science%20Courses" target="_blank">Data Science Courses</a></li>
+                        <li><a href="https://www.coursera.org/search?query=Artificial%20Intelligence%20Courses" target="_blank">Artificial Intelligence Courses</a></li>
+                        <li><a href="https://www.coursera.org/search?query=Python%20Courses" target="_blank">Python Courses</a></li>
+                        <li><a href="https://www.coursera.org/search?query=Cybersecurity%20Courses" target="_blank">Cybersecurity Courses</a></li>
+                        <li><a href="https://www.coursera.org/search?query=Digital%20Marketing%20Courses" target="_blank">Digital Marketing Courses</a></li>
+                        <li><a href="https://www.coursera.org/search?query=Blog" target="_blank">Blog</a></li>
+                    </ul>
+                </div>
+        
+                <!-- Legal -->
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="https://www.termsfeed.com/live/e002a493-0332-48ac-89ba-c3b85c083d7e" target="_blank">Privacy Policy</a></li>
+                        <li><a href="terms-and-condition.html" target="_blank">Terms and Conditions</a></li>
+                        <li><a href="Grievances.html" target="_blank">Grievances</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </section>
+</body>
+</html>
